@@ -12,6 +12,7 @@ import Post from "./Store/PostContext"
  */
 import Home from "./Pages/Home"
 import { AuthContext, FirebaseContext } from "./Store/FirebaseContext"
+import PrivateRoute from "./private/privateRoute"
 
 function App() {
   const { setUser } = useContext(AuthContext)
@@ -35,8 +36,10 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/create">
-            <Create />
+          <Route component={<PrivateRoute />}>
+            <Route path="/create">
+              <Create />
+            </Route>
           </Route>
           <Route path="/view">
             <View />
